@@ -6,10 +6,15 @@ function App() {
   return (
     <>
       <div className="main">
-        <h1 className="center blue-text" contentEditable={true}>
-          Your list name here
+        <h1 className="blue-text" contentEditable={true}>
+          Simple search app
         </h1>
-        <Input />
+        <Input
+          placeHolder="Search a place"
+          name="search"
+          errorMsg="Enter a valid search text"
+          valErrorMsg="please enter a search text"
+        />
       </div>
 
       <div className="small">

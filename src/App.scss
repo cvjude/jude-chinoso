@@ -28,28 +28,16 @@ body {
     0 10px 1px -4px rgba(0, 0, 0, 0.15), 0 20px 0 -10px #eee,
     0 20px 1px -9px rgba(0, 0, 0, 0.15);
   padding: 30px;
-  margin-top: 20px;
+  margin-top: 100px;
 
   @media print {
     width: 500px;
   }
 }
 
-.print_button {
-  display: flex;
-  margin: 50px auto 0;
-  background: none;
-  border: none;
-  color: purple;
-  font-weight: bold;
-
-  @media print {
-    display: none;
-  }
-}
-
 .blue-text {
   color: purple;
+  margin-bottom: 30px;
 }
 
 .small {
