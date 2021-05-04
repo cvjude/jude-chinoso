@@ -1,0 +1,173 @@
+%placeholder {
+  top: 12px !important;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+%selected {
+  color: white;
+  background: purple;
+}
+
+.input-div {
+  width: 100%;
+  margin-bottom: 20px;
+
+  .input {
+    .input-type {
+      z-index: 0;
+      background: transparent;
+      width: 100%;
+      font-size: 0.85em;
+      padding: 8px;
+      padding-top: 20px;
+      outline: none;
+      border: none;
+
+      &:focus {
+        + .el-spans {
+          .place-holder {
+            @extend %placeholder;
+          }
+        }
+      }
+
+      &[type='date'] {
+        + .el-spans {
+          .place-holder {
+            @extend %placeholder;
+          }
+        }
+      }
+
+      &.text-area {
+        + .el-spans {
+          .place-holder {
+            top: 32px;
+          }
+        }
+      }
+    }
+
+    .place-holder {
+      z-index: -1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%);
+      margin-bottom: 0;
+      margin-left: 8px;
+      font-size: 1em;
+      color: #333;
+      transition: 0.3s ease;
+      line-height: 1.125rem;
+    }
+
+    .open-drop {
+      + .el-spans {
+        .place-holder {
+          @extend %placeholder;
+        }
+
+        .grow {
+          z-index: -2;
+          background: purple;
+          width: 100%;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          transform-origin: left;
+        }
+      }
+    }
+  }
+
+  .input-con {
+    border-radius: 10px;
+    z-index: 0;
+    position: relative;
+    //use shadow to see border
+
+    &.typing,
+    &.valid,
+    &.invalid {
+      .place-holder {
+        @extend %placeholder;
+      }
+    }
+
+    .error {
+      margin-top: 2px;
+      font-size: 0.7em;
+      color: orangered;
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin-right: 10px;
+    }
+
+    input:focus {
+      + .el-spans {
+        .grow {
+          background: purple;
+          width: 100%;
+        }
+      }
+    }
+
+    &.typing {
+      .grow {
+        &::after {
+          background: purple;
+          width: 100%;
+        }
+      }
+    }
+
+    &.valid {
+      .grow {
+        &::after {
+          background: purple;
+        }
+      }
+    }
+
+    &.invalid {
+      .grow {
+        &::after {
+          background: orangered;
+        }
+      }
+    }
+
+    .grow {
+      height: 2px;
+      display: block;
+      background: #333;
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+        width: 0;
+      }
+    }
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill + .el-spans {
+  .place-holder {
+    top: 12px !important;
+    font-size: 0.75rem !important;
+    line-height: 1 !important;
+  }
+}
